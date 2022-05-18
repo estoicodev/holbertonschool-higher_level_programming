@@ -91,8 +91,8 @@ class Square:
                 for x in range(self.__position[0]):
                     square_str += " "
                 for j in range(self.__size):
-                    square_str += "#"
-                square_str += "\n"
-        else:
-            square_str += "\n"
+                    if j == self.__size - 1 and i != self.__size - 1:
+                        square_str += "#\n"
+                    else:
+                        square_str += "#"
         return square_str
