@@ -84,18 +84,15 @@ class Square:
     def __repr__(self):
         """Print the instance of the class Square"""
         square_str = ""
-        if self.__size == 0:
-            square_str += "\n"
-        else:
-            if self.__position[1] > 0:
-                for y in range(self.__position[1]):
-                    square_str += "\n"
+        if self.__size > 0:
+            for y in range(self.__position[1]):
+                square_str += "\n"
             for i in range(self.__size):
                 for x in range(self.__position[0]):
                     square_str += " "
                 for j in range(self.__size):
-                    if j == self.__size - 1 and i != self.__size - 1:
-                        square_str += "#\n"
-                    else:
-                        square_str += "#"
+                    square_str += "#"
+                square_str += "\n"
+        else:
+            square_str += "\n"
         return square_str
