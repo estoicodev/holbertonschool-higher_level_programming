@@ -7,6 +7,7 @@ class Square:
 
     Attributes:
     attr1 (size): size of square
+    attr2 (position): position of the square
     """
     def __init__(self, size=0, position=(0, 0)):
         """
@@ -53,9 +54,9 @@ class Square:
             if self.__position[1] > 0:
                 for y in range(self.__position[1]):
                     print()
+            for x in range(self.__position[0]):
+                print(" ", end="")
             for i in range(self.__size):
-                for x in range(self.__position[0]):
-                    print(" ", end="")
                 for j in range(self.__size):
                     if j == self.__size - 1:
                         print("#")
@@ -70,6 +71,8 @@ class Square:
     @position.setter
     def position(self, value):
         """Sets the position attribute of the instance of class Square"""
-        if type(value[0]) != int or type(value[1]) != int:
+        if type(value[0]) != int or type(value[1]) != int
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if value[0] < 0 or value[1] < 0
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
