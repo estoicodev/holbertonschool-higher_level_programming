@@ -73,6 +73,8 @@ class Rectangle:
         Returns:
         int: Returns the perimeter of the rectangle
         """
+        if self.__width == 0 or self.__height == 0:
+            return 0
         return (2 * self.__width) + (2 * self.__height)
 
     def __str__(self):
@@ -98,7 +100,7 @@ class Rectangle:
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
-        """Compare the areas of instances rect_1 and rect_2 of class Rectangle"""
+        """Returns the biggest rectangle based on the area"""
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
