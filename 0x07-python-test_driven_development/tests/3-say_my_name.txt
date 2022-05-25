@@ -1,0 +1,108 @@
+The ``3-say_my_name`` module
+======================
+
+Using ``say_my_name``
+-------------------
+
+Import ``say_my_name`` from the ``3-say_my_name`` module:
+    >>> say_my_name = __import__("3-say_my_name").say_my_name
+
+Now use it in a regular case:
+    >>> say_my_name("Mauricio", "Carrasco")
+    My name is Mauricio Carrasco
+
+Checking without last_name:
+    >>> say_my_name("Mauricio")
+    My name is Mauricio 
+
+Checking with only empty first_name:
+    >>> say_my_name("")
+    My name is  
+
+Checking with empty first_name and complete last_name:
+    >>> say_my_name("", "Carrasco")
+    My name is  Carrasco
+
+Checking if first_name is int:
+    >>> say_my_name(100, "Carrasco")
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Checking if first_name is float:
+    >>> say_my_name(100.5, "Carrasco")
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Checking if first_name is bool:
+    >>> say_my_name(True, "Carrasco")
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Checking if first_name is a list of strings:
+    >>> say_my_name(["Mauricio", "Victor"], "Carrasco")
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Checking if first_name is a list of different types:
+    >>> say_my_name([12, True, "Mauricio", 10.5], "Carrasco")
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Checking if first_name is None:
+    >>> say_my_name(None, "Carrasco")
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Checking if last_name is int:
+    >>> say_my_name("Mauricio", 100)
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
+
+Checking if last_name is float:
+    >>> say_my_name("Mauricio", 100.5)
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
+
+Checking if last_name is bool:
+    >>> say_my_name("Mauricio", False)
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
+
+Checking if last_name is a list of strings:
+    >>> say_my_name("Mauricio", ["Carrasco", "Mendez"])
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
+
+Checking if last_name is a list of different types:
+    >>> say_my_name("Mauricio", [10, True, "Carrasco", 10.5])
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
+
+Checking if last_name is None:
+    >>> say_my_name("Mauricio", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
+
+Checking no args:
+    >>> say_my_name()
+    Traceback (most recent call last):
+    ...
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Checking more than 2 args:
+    >>> say_my_name("Victor", "Mauricio", "Carrasco")
+    Traceback (most recent call last):
+    ...
+    TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
