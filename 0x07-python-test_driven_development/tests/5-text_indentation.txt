@@ -7,14 +7,24 @@ Using ``text_indentation``
 Import ``text_indentation`` from the ``5-text_indentation`` module:
     >>> text_indentation = __import__("5-text_indentation").text_indentation
 
+Checking module docstring:
+    >>> m = __import__("5-text_indentation").__doc__
+    >>> len(m) > 1
+    True
+
+Checking function docstring:
+    >>> f = __import__("5-text_indentation").text_indentation.__doc__
+    >>> len(f) > 1
+    True
+
 Now use it in a regular case:
     >>> text_indentation("¿Hola? Te dije: Pasame el telefono por favor. Gracias")
     ¿Hola?
-
+    <BLANKLINE>
     Te dije:
-
+    <BLANKLINE>
     Pasame el telefono por favor.
-
+    <BLANKLINE>
     Gracias
 
 Checking if text is int:
