@@ -7,6 +7,16 @@ Using ``say_my_name``
 Import ``say_my_name`` from the ``3-say_my_name`` module:
     >>> say_my_name = __import__("3-say_my_name").say_my_name
 
+Checking module docstring:
+    >>> m = __import__("3-say_my_name").__doc__
+    >>> len(m) > 1
+    True
+
+Checking function docstring:
+    >>> f = __import__("3-say_my_name").say_my_name.__doc__
+    >>> len(f) > 1
+    True
+
 Now use it in a regular case:
     >>> say_my_name("Mauricio", "Carrasco")
     My name is Mauricio Carrasco
