@@ -7,6 +7,16 @@ Using ``add_integer``
 Import ``add_integer`` from the ``0-add_integer`` module:
     >>> add_integer = __import__("0-add_integer").add_integer
 
+Checking module docstring:
+    >>> m = __import__("0-add_integer").__doc__
+    >>> len(m) > 1
+    True
+
+Checking function docstring:
+    >>> f = __import__("0-add_integer").add_integer.__doc__
+    >>> len(f) > 1
+    True
+
 Now use it in a regular case:
     >>> add_integer(5, 10)
     15
