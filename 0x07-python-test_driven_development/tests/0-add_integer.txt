@@ -1,0 +1,82 @@
+The ``0-add_integer`` module
+======================
+
+Using ``add_integer``
+-------------------
+
+Import ``add_integer`` from the ``0-add_integer`` module:
+    >>> add_integer = __import__("0-add_integer").add_integer
+
+Now use it in a regular case:
+    >>> add_integer(5, 10)
+    15
+
+Checking positive with negative:
+    >>> add_integer(5, -10)
+    -5
+
+Checking negative with positive:
+    >>> add_integer(-5, 10)
+    5
+
+Checking both negative:
+    >>> add_integer(-5, -10)
+    -15
+
+Checking float with int:
+    >>> add_integer(10.5, 20)
+    30
+
+Checking int with float:
+    >>> add_integer(10, 25.5)
+    35
+
+Checking both float:
+    >>> add_integer(10.3, 30.5)
+    40
+
+Checking long int:
+    >>> add_integer(1, 999999999999999999999999999999)
+    1000000000000000000000000000000
+
+Checking for inf:
+    >>> add_integer(1, float('inf'))
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
+
+Checking no-number with number:
+    >>> add_integer([10], 50)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+Checking number with no-number:
+    >>> add_integer(10, (50, 40))
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+
+Checking number with bool:
+    >>> add_integer(10, False)
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+
+Checking bool with number:
+    >>> add_integer(True, 50)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+Checking no args:
+    >>> add_integer()
+    Traceback (most recent call last):
+    ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Checking more than 2 args:
+    >>> add_integer(10, 20, 30)
+    Traceback (most recent call last):
+    ...
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
