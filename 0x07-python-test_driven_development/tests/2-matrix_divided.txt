@@ -7,6 +7,16 @@ Using ``matrix_divided``
 Import ``matrix_divided`` from the ``2-matrix_divided`` module:
     >>> matrix_divided = __import__("2-matrix_divided").matrix_divided
 
+Checking module docstring:
+    >>> m = __import__("2-matrix_divided").__doc__
+    >>> len(m) > 1
+    True
+
+Checking function docstring:
+    >>> f = __import__("2-matrix_divided").matrix_divided.__doc__
+    >>> len(f) > 1
+    True
+
 Now use it in a regular case:
     >>> matrix_divided([[1, 2], [3, 4]], 2)
     [[0.5, 1.0], [1.5, 2.0]]
