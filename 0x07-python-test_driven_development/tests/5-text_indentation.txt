@@ -1,0 +1,72 @@
+The ``5-text_indentation`` module
+======================
+
+Using ``text_indentation``
+-------------------
+
+Import ``text_indentation`` from the ``5-text_indentation`` module:
+    >>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Now use it in a regular case:
+    >>> text_indentation("¿Hola? Te dije: Pasame el telefono por favor. Gracias")
+    ¿Hola?
+
+    Te dije:
+
+    Pasame el telefono por favor.
+
+    Gracias
+
+Checking if text is int:
+    >>> text_indentation(10)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Checking if text is float:
+    >>> text_indentation(10.5)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Checking if text is bool:
+    >>> text_indentation(False)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Checking if text is a list with a string:
+    >>> text_indentation(["Hola a todos."])
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Checking if text is a list with multiple string:
+    >>> text_indentation(["Hola", "Soy", "Tu", "Padre"])
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Checking if text is a list with different types:
+    >>> text_indentation([10, 10.5, False, "Mau"])
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Checking if text is None:
+    >>> text_indentation([10, 10.5, False, "Mau"])
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Checking no args:
+    >>> text_indentation()
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Checking more than 1 arg:
+    >>> text_indentation("Mauricio. Carrasco:", "¿Hola? Adios")
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() takes 1 positional argument but 2 were given
