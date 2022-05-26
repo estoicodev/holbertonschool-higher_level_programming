@@ -25,6 +25,10 @@ Checking matrix with long div:
     >>> matrix_divided([[1, 2], [3, 4]], 999999999999999999999999999999)
     [[0.0, 0.0], [0.0, 0.0]]
 
+Checking matrix of integers with infinity division:
+    >>> matrix_divided([[1, 2], [3, 4]], float('inf'))
+    [[0.0, 0.0], [0.0, 0.0]]
+
 Checking matrix with different size of rows:
     >>> matrix_divided([[1], [1, 2], [1, 2, 3]], 2)
     Traceback (most recent call last):
