@@ -55,6 +55,12 @@ Checking for inf:
     ...
     OverflowError: cannot convert float infinity to integer
 
+Checking for Nan:
+    >>> add_integer(10, float('Nan'))
+    Traceback (most recent call last):
+    ...
+    ValueError: cannot convert float NaN to integer
+
 Checking no-number with number:
     >>> add_integer([10], 50)
     Traceback (most recent call last):
@@ -84,6 +90,10 @@ Checking no args:
     Traceback (most recent call last):
     ...
     TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Checking 1 arg:
+    >>> add_integer(10)
+    108
 
 Checking more than 2 args:
     >>> add_integer(10, 20, 30)
