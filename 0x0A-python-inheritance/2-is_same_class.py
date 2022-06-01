@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """This module defines is_same_class function"""
 
 
