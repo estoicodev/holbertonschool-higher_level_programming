@@ -7,11 +7,6 @@ Using ``print_sorted``
 Import the ``1-my_list`` module:
     >>> MyList = __import__('1-my_list').MyList
 
-Checking that MyList only executed with no args:
-    >>> my_list = MyList(1)
-    Traceback (most recent call last):
-    TypeError: 'int' object is not iterable
-
 Checking object can be created:
     >>> my_list = MyList()
     >>> my_list
@@ -21,6 +16,11 @@ Checking object with None:
     >>> my_list = MyList(None)
     Traceback (most recent call last):
     TypeError: 'NoneType' object is not iterable
+
+Checking that MyList only executed with no args:
+    >>> my_list = MyList(1)
+    Traceback (most recent call last):
+    TypeError: 'int' object is not iterable
 
 Checking object with more than 1 list:
     >>> my_list = MyList([1, 2], [3, 4])
@@ -59,7 +59,7 @@ Checking add str and int to the list:
     >>> print(my_list)
     ['world', 10]
 
-Checking add str and int to the list:
+Checking print_sorted method with str and int elements in the list:
     >>> my_list = MyList()
     >>> my_list.append("world")
     >>> my_list.append(10)
@@ -67,25 +67,33 @@ Checking add str and int to the list:
     Traceback (most recent call last):
     TypeError: '<' not supported between instances of 'int' and 'str'
 
-Checking list printed correctly:
+Check if the print_sorted method works correctly:
     >>> my_list = MyList()
-    >>> my_list.append(1)
+    >>> my_list.append(5)
     >>> my_list.append(4)
     >>> my_list.append(2)
     >>> my_list.append(3)
-    >>> my_list.append(5)
+    >>> my_list.append(10)
     >>> print(my_list)
-    [1, 4, 2, 3, 5]
-
-Checking print_sorted function prints in ascending order:
+    [5, 4, 2, 3, 10]
     >>> my_list.print_sorted()
-    [1, 2, 3, 4, 5]
+    [2, 3, 4, 5, 10]
 
 Checking that the original list isn't altered:
     >>> print(my_list)
-    [1, 4, 2, 3, 5]
+    [5, 4, 2, 3, 10]
 
-Checking with negative numbers:
+Check if the print_sorted method works correctly with a sorted list:
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(4)
+    >>> my_list.append(5)
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+
+Check print_sorted method works correctly with negative numbers:
     >>> my_list = MyList()
     >>> my_list.append(-1)
     >>> my_list.append(-4)
@@ -94,18 +102,10 @@ Checking with negative numbers:
     >>> my_list.append(-5)
     >>> print(my_list)
     [-1, -4, -2, -3, -5]
-
-Checking sorted list with negative numbers:
     >>> my_list.print_sorted()
     [-5, -4, -3, -2, -1]
 
-Checking sorted list with no args:
+Check if print_sorted method works correctly only with no args:
     >>> my_list.print_sorted(1)
     Traceback (most recent call last):
     TypeError: print_sorted() takes 1 positional argument but 2 were given
-
-Checking with different types of a list:
-    >>> my_list = MyList([1, "Betty", "Holberton", 5])
-    >>> my_list.print_sorted()
-    Traceback (most recent call last):
-    TypeError: '<' not supported between instances of 'str' and 'int'
