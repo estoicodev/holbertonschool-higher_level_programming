@@ -7,7 +7,7 @@ def write_file(filename="", text=""):
     Args:
     filename (str): filename
     text (str): text to write
-        """
+    """
     with open(filename, mode="w", encoding="utf-8") as f:
         n = f.write(text)
-        return n
+    return n
