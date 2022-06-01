@@ -67,8 +67,12 @@ Checking print_sorted method with str and int elements in the list:
     Traceback (most recent call last):
     TypeError: '<' not supported between instances of 'int' and 'str'
 
-Check if the print_sorted method works correctly:
+Check if the print_sorted method works with an empty list:
     >>> my_list = MyList()
+    >>> my_list.print_sorted()
+    []
+
+Check if the print_sorted method works (normal case):
     >>> my_list.append(5)
     >>> my_list.append(4)
     >>> my_list.append(2)
