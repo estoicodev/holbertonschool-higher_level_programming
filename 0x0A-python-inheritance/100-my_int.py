@@ -3,6 +3,7 @@
 
 
 class MyInt(int):
+    """MyInt class inherited to int class"""
     def __eq__(self, other):
         """
         Args:
