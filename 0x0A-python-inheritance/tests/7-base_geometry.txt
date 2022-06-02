@@ -43,9 +43,45 @@ Check if integer_validator method works correctly:
     >>> bg = BaseGeometry()
     >>> bg.integer_validator("Mau", 10)
 
-Check integer_validator method with value argument different to int:
+Check integer_validator method with value argument str:
     >>> bg = BaseGeometry()
     >>> bg.integer_validator("Mau", "10")
+    Traceback (most recent call last):
+    TypeError: Mau must be an integer
+
+Check integer_validator method with value argument float:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau", 10.5)
+    Traceback (most recent call last):
+    TypeError: Mau must be an integer
+
+Check integer_validator method with value argument bool:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau", False)
+    Traceback (most recent call last):
+    TypeError: Mau must be an integer
+
+Check integer_validator method with value argument list:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau", [10])
+    Traceback (most recent call last):
+    TypeError: Mau must be an integer
+
+Check integer_validator method with value argument tuple:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau", (10,))
+    Traceback (most recent call last):
+    TypeError: Mau must be an integer
+
+Check integer_validator method with value argument dict:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau", {10, 20})
+    Traceback (most recent call last):
+    TypeError: Mau must be an integer
+
+Check integer_validator method with value argument None:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau", None)
     Traceback (most recent call last):
     TypeError: Mau must be an integer
 
