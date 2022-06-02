@@ -19,7 +19,8 @@ class Rectangle(BaseGeometry):
         self.__height = height
 
     def area(self):
-        """Returns the area of instance class Rectangle based on width and height"""
+        """Returns the area of instance class Rectangle
+        based on width and height"""
         return self.__width * self.__height
 
     def __str__(self):
