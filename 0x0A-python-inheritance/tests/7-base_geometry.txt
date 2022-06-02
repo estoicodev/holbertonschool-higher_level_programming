@@ -1,0 +1,80 @@
+The ``7-base_geometry`` module
+======================
+
+Import the ``7-base_geometry`` module:
+    >>> BaseGeometry = __import__(`7-base_geometry`).BaseGeometry
+
+Checking object can be created:
+    >>> bg = BaseGeometry()
+    >>> type(bg)
+    <class '__main__.BaseGeometry'>
+
+Checking object with None:
+    >>> bg = BaseGeometry(None)
+    Traceback (most recent call last):
+    TypeError: BaseGeometry() takes no arguments
+
+Checking if object takes no args:
+    >>> bg = BaseGeometry(10)
+    Traceback (most recent call last):
+    TypeError: BaseGeometry() takes no arguments
+
+======================
+Using ``area``
+----------------------
+
+Check if area method takes no args:
+    >>> bg = BaseGeometry()
+    >>> bg.area(10)
+    Traceback (most recent call last):
+    TypeError: BaseGeometry.area() takes 1 positional argument but 2 were given
+
+Check if area method raise Exception:
+    >>> bg = BaseGeometry()
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
+
+======================
+Using ``integer_validator``
+----------------------
+
+Check if integer_validator method works correctly:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau", 10)
+
+Check integer_validator method with value argument different to int:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau", "10")
+    Traceback (most recent call last):
+    TypeError: Mau must be an integer
+
+Check integer_validator method with value argument equals to zero:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau", 0)
+    Traceback (most recent call last):
+    ValueError: Mau must be greater than 0
+
+Check integer_validator method with value argument less than zero:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Leo", -10)
+    Traceback (most recent call last):
+    ValueError: Leo must be greater than 0
+
+Check integer_validator method with no args:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Check integer_validator method with 1 arg:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau")
+    Traceback (most recent call last):
+    TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+
+Check integer_validator method with more than 2 args:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("Mau", 10, 20)
+    Traceback (most recent call last):
+    TypeError: BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
