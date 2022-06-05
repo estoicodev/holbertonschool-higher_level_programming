@@ -24,6 +24,22 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
+    def area(self):
+        """Returns the area of the instance Rectangle class"""
+        return self.__width * self.__height
+
+    def display(self):
+        """Prints in stdout the Rectangle instance with the character #"""
+        for row in range(self.__height):
+            for column in range(self.__width):
+                print("#", end="")
+            print()
+
+    def __str__(self):
+        """Returns the string representation of the object"""
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
+            self.id, self.__x, self.__y, self.__width, self.__height)
+
     @property
     def width(self):
         """Returns width of instance"""
