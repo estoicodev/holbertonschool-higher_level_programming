@@ -13,7 +13,8 @@ class Square(Rectangle):
     height (int): Height of the instance
     x (int): x of the instance
     y (int): y of the instance
-        """
+    """
+
     def __init__(self, size, x=0, y=0, id=None):
         """Initializes an instance of Square class"""
         super().__init__(size, size, x, y, id)
@@ -45,3 +46,13 @@ class Square(Rectangle):
         else:
             for i in range(count):
                 setattr(self, attributes[i], args[i])
+
+    def to_dictionary(self):
+        olddict = self.__dict__.copy()
+        newdict = {}
+        for e in olddict:
+            key = e.replace("_Rectangle__", "")
+            if key == "width" or key == "height":
+                key = "size"
+            newdict[key] = olddict[e]
+        return newdict
