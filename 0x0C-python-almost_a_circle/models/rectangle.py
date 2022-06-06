@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """This module defines a Rectangle class"""
-
-
 from models.base import Base
 
 
@@ -124,6 +122,7 @@ class Rectangle(Base):
             self.id, self.__x, self.__y, self.__width, self.__height)
 
     def to_dictionary(self):
+        """Returns the dictionary representation of a Rectangle instance"""
         olddict = self.__dict__
         newdict = {}
         for e in olddict:
