@@ -48,6 +48,7 @@ class Square(Rectangle):
                 setattr(self, attributes[i], args[i])
 
     def to_dictionary(self):
+        """Returns the dictionary representation of a Rectangle instance"""
         olddict = self.__dict__.copy()
         newdict = {}
         for e in olddict:
