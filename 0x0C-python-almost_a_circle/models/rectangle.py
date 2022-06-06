@@ -39,12 +39,17 @@ class Rectangle(Base):
                 print("#", end="")
             print()
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Assigns an argument to each attribute"""
         attributes = ["id", "width", "height", "x", "y"]
         count = len(args)
-        for i in range(count):
-            setattr(self, attributes[i], args[i])
+        if not args or count == 0:
+            for key, value in kwargs.items():
+                if key in attributes:
+                    setattr(self, key, value)
+        else:
+            for i in range(count):
+                setattr(self, attributes[i], args[i])
 
     def __str__(self):
         """Returns the string representation of the object"""
