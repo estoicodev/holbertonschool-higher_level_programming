@@ -22,3 +22,26 @@ class Square(Rectangle):
         """Returns the string representation of the Square class object"""
         return "[Square] ({:d}) {:d}/{:d} - {:d}".format(
             self.id, self.x, self.y, self.width)
+
+    @property
+    def size(self):
+        """Returns size of instance"""
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """Set a new size for the instance"""
+        self.width = value
+        self.height = value
+
+    def update(self, *args, **kwargs):
+        """Assigns an argument to each attribute to the Square class"""
+        attributes = ["id", "size", "x", "y"]
+        count = len(args)
+        if not args or count == 0:
+            for key, value in kwargs.items():
+                if key in attributes:
+                    setattr(self, key, value)
+        else:
+            for i in range(count):
+                setattr(self, attributes[i], args[i])
