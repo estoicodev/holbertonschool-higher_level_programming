@@ -6,7 +6,7 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """class Rectangle
+    """class Rectangle inherited by Base class
     Attributes:
     id (int): Id of the instance
     width (int): Width of the instance
@@ -16,44 +16,24 @@ class Rectangle(Base):
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Initializes an instance of Rectangle class"""
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        """Initializes an instance of Rectangle class
+        Args:
+            width (int): Width of the instance Rectangle class
+            height (int): Height of the instance Rectangle class
+            x (int): x of the instance Rectangle class
+            y (int): y of the instance Rectangle class
+            id (int): Id of the instance Rectangle class
+        Raises:
+            TypeError: if width or height is not an integer
+            ValueError: if width or height <= 0
+            TypeError: if x or y is not an integer
+            ValueError: if x or y < 0
+        """
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
         super().__init__(id)
-
-    def area(self):
-        """Returns the area of the instance Rectangle class"""
-        return self.__width * self.__height
-
-    def display(self):
-        """Prints in stdout the Rectangle instance with the character #"""
-        for row in range(self.__y):
-            print()
-        for row in range(self.__height):
-            for column in range(self.__x):
-                print(" ", end="")
-            for column in range(self.__width):
-                print("#", end="")
-            print()
-
-    def update(self, *args, **kwargs):
-        """Assigns an argument to each attribute"""
-        attributes = ["id", "width", "height", "x", "y"]
-        count = len(args)
-        if not args or count == 0:
-            for key, value in kwargs.items():
-                if key in attributes:
-                    setattr(self, key, value)
-        else:
-            for i in range(count):
-                setattr(self, attributes[i], args[i])
-
-    def __str__(self):
-        """Returns the string representation of the object"""
-        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
-            self.id, self.__x, self.__y, self.__width, self.__height)
 
     @property
     def width(self):
@@ -110,6 +90,38 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """Returns the area of the instance Rectangle class"""
+        return self.__width * self.__height
+
+    def display(self):
+        """Prints in stdout the Rectangle instance with the character #"""
+        for row in range(self.__y):
+            print()
+        for row in range(self.__height):
+            for column in range(self.__x):
+                print(" ", end="")
+            for column in range(self.__width):
+                print("#", end="")
+            print()
+
+    def update(self, *args, **kwargs):
+        """Assigns an argument to each attribute"""
+        attributes = ["id", "width", "height", "x", "y"]
+        count = len(args)
+        if not args or count == 0:
+            for key, value in kwargs.items():
+                if key in attributes:
+                    setattr(self, key, value)
+        else:
+            for i in range(count):
+                setattr(self, attributes[i], args[i])
+
+    def __str__(self):
+        """Returns the string representation of the object"""
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
+            self.id, self.__x, self.__y, self.__width, self.__height)
 
     def to_dictionary(self):
         olddict = self.__dict__
