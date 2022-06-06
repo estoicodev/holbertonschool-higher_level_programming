@@ -39,6 +39,13 @@ class Rectangle(Base):
                 print("#", end="")
             print()
 
+    def update(self, *args):
+        """Assigns an argument to each attribute"""
+        attributes = ["id", "width", "height", "x", "y"]
+        count = len(args)
+        for i in range(count):
+            setattr(self, attributes[i], args[i])
+
     def __str__(self):
         """Returns the string representation of the object"""
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
