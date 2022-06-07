@@ -5,6 +5,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 import io
 import contextlib
+import os
 
 
 class TestRectangleClass(unittest.TestCase):
@@ -893,3 +894,49 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(
             f.getvalue(),
             "\n####\n####\n####\n")
+
+    def test_save_to_file_rectangle(self):
+        """Testing save_to_file method with Rectangle class"""
+        Base.reset_class()
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+        with open("Rectangle.json", "r") as file:
+            text_file = file.read()
+        self.assertEqual(
+            len(text_file),
+            len('[{"width": 10, "height": 7, "x": 2, "y": 8, "id": 1}, '
+                '{"width": 2, "height": 4, "x": 0, "y": 0, "id": 2}]'))
+
+    def test_save_to_file_rectangle_with_None_arg(self):
+        """Testing save_to_file method with Rectangle class with None arg"""
+        os.remove("Rectangle.json")
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            text_file = file.read()
+        self.assertEqual(text_file, "[]")
+
+    def test_save_to_file_rectangle_with_empty_list(self):
+        """Testing save_to_file method with Rectangle class with empty list"""
+        os.remove("Rectangle.json")
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            text_file = file.read()
+        self.assertEqual(text_file, "[]")
+
+    def test_save_to_file_rectangle_overwrite_file(self):
+        """Testing save_to_file method with Rectangle class with None arg"""
+        os.remove("Rectangle.json")
+        Base.reset_class()
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+        r3 = Rectangle(1, 1, 1)
+        r4 = Rectangle(1, 1)
+        Rectangle.save_to_file([r3, r4])
+        with open("Rectangle.json", "r") as file:
+            text_file = file.read()
+        self.assertEqual(
+            len(text_file),
+            len('[{"width": 1, "height": 1, "x": 1, "y": 0, "id": 3}, '
+                '{"width": 1, "height": 1, "x": 0, "y": 0, "id": 4}]'))

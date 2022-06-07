@@ -3,6 +3,7 @@
 import unittest
 import io
 import contextlib
+import os
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -886,3 +887,49 @@ class TestSquareClass(unittest.TestCase):
         s1 = Square(1, 2, 3, 4)
         with self.assertRaises(TypeError):
             s1_dict = s1.to_dictionary(10)
+
+    def test_save_to_file_square(self):
+        """Testing save_to_file method with Square class"""
+        Base.reset_class()
+        r1 = Square(10, 7, 2)
+        r2 = Square(2, 4)
+        Square.save_to_file([r1, r2])
+        with open("Square.json", "r") as file:
+            text_file = file.read()
+        self.assertEqual(
+            len(text_file),
+            len('[{"size": 10, "x": 7, "y": 2, "id": 1}, '
+                '{"size": 2, "x": 4, "y": 0, "id": 2}]'))
+
+    def test_save_to_file_square_with_None_arg(self):
+        """Testing save_to_file method with Square class with None arg"""
+        os.remove("Square.json")
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            text_file = file.read()
+        self.assertEqual(text_file, "[]")
+
+    def test_save_to_file_square_with_empty_list(self):
+        """Testing save_to_file method with Square class with empty list"""
+        os.remove("Square.json")
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            text_file = file.read()
+        self.assertEqual(text_file, "[]")
+
+    def test_save_to_file_square_overwrite_file(self):
+        """Testing save_to_file method with Square with None arg"""
+        os.remove("Square.json")
+        Base.reset_class()
+        r1 = Square(10, 7, 2)
+        r2 = Square(2, 4)
+        Square.save_to_file([r1, r2])
+        r3 = Square(1, 1, 1)
+        r4 = Square(1, 1)
+        Square.save_to_file([r3, r4])
+        with open("Square.json", "r") as file:
+            text_file = file.read()
+        self.assertEqual(
+            len(text_file),
+            len('[{"size": 1, "x": 1, "y": 1, "id": 3}, '
+                '{"size": 1, "x": 1, "y": 0, "id": 4}]'))

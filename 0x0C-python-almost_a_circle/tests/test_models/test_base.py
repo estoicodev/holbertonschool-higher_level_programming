@@ -355,3 +355,23 @@ class TestBaseClass(unittest.TestCase):
         Base.reset_class()
         list_square_output = Square.load_from_file()
         self.assertEqual(list_square_output, [])
+
+    def test_save_to_file_csv_rectangle(self):
+        """Testing save_to_file method (to csv file) for Rectangle class"""
+        Base.reset_class()
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file_csv([r1, r2])
+        with open("Rectangle.csv", "r") as file:
+            text_file = file.read()
+        self.assertEqual(text_file, "1,10,7,2,8\n2,2,4,0,0")
+
+    def test_save_to_file_csv_square(self):
+        """Testing save_to_file method (to csv file) for Square class"""
+        Base.reset_class()
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        Square.save_to_file_csv([s1, s2])
+        with open("Square.csv", "r") as file:
+            text_file = file.read()
+        self.assertEqual(text_file, "1,5,0,0\n2,7,9,1")
