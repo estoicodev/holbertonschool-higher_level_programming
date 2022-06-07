@@ -331,15 +331,15 @@ class TestBaseClass(unittest.TestCase):
         Square.save_to_file(list_squares_input)
         list_squares_output = Square.load_from_file()
         self.assertEqual(str(list_squares_input[0]),
-                         "[Square] (5) 0/0 - 5")
+                         "[Square] (1) 0/0 - 5")
         self.assertEqual(str(list_squares_input[1]),
-                         "[Square] (6) 9/1 - 7")
+                         "[Square] (2) 9/1 - 7")
         self.assertNotEqual(id(list_squares_input[0]),
                             id(list_squares_input[1]))
         self.assertEqual(str(list_squares_input[0]),
-                         "[Square] (5) 0/0 - 5")
+                         "[Square] (1) 0/0 - 5")
         self.assertEqual(str(list_squares_output[1]),
-                         "[Square] (6) 9/1 - 7")
+                         "[Square] (2) 9/1 - 7")
         self.assertNotEqual(id(list_squares_output[0]),
                             id(list_squares_output[1]))
 
