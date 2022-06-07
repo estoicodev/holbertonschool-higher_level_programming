@@ -14,7 +14,6 @@ class TestBaseClass(unittest.TestCase):
 
     def test_single_instance_without_id(self):
         """Testing for single instance of Base class without id"""
-        Base.reset_class()
         b = Base()
         self.assertEqual(b.id, 1)
 
@@ -49,8 +48,7 @@ class TestBaseClass(unittest.TestCase):
         Base.reset_class()
         b1 = Base(10)
         b2 = Base(10)
-        self.assertEqual(b1.id, 10)
-        self.assertEqual(b2.id, 10)
+        self.assertEqual(b1.id, b2.id)
 
     def test_single_instance_with_None_id(self):
         """Testing for single instance of Base class with None id"""
@@ -79,6 +77,14 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(b2.id, 2)
         self.assertEqual(b3.id, 12)
         self.assertEqual(b4.id, 3)
+
+    def test_single_instance_assign_id(self):
+        """Testing for single instance of Base class assigning id"""
+        Base.reset_class()
+        b = Base()
+        self.assertEqual(b.id, 1)
+        b.id = 42
+        self.assertEqual(b.id, 42)
 
     def test_private_class_variable(self):
         """Testing for private Base class variable"""

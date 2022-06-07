@@ -11,7 +11,6 @@ class Base:
     id (int): Id of the instance"""
     __nb_objects = 0
 
-    @staticmethod
     def reset_class():
         """Reset the attributes of the class for testing"""
         Base.__nb_objects = 0
