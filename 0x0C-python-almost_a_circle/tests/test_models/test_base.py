@@ -143,7 +143,7 @@ class TestBaseClass(unittest.TestCase):
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as file:
             text_file = file.read()
-        self.assertEqual(len(text_file), len("[]"))
+        self.assertEqual(text_file, "[]")
 
     def test_save_to_file_Rectangle_with_empty_list(self):
         """Testing save_to_file method with Rectangle class with empty list"""
@@ -151,7 +151,7 @@ class TestBaseClass(unittest.TestCase):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             text_file = file.read()
-        self.assertEqual(len(text_file), len("[]"))
+        self.assertEqual(text_file, "[]")
 
     def test_save_to_file_Rectangle_overwrite_file(self):
         """Testing save_to_file method with Rectangle class with None arg"""
@@ -189,7 +189,7 @@ class TestBaseClass(unittest.TestCase):
         Square.save_to_file(None)
         with open("Square.json", "r") as file:
             text_file = file.read()
-        self.assertEqual(len(text_file), len("[]"))
+        self.assertEqual(text_file, "[]")
 
     def test_save_to_file_Square_with_empty_list(self):
         """Testing save_to_file method with Square class with empty list"""
@@ -197,7 +197,7 @@ class TestBaseClass(unittest.TestCase):
         Square.save_to_file([])
         with open("Square.json", "r") as file:
             text_file = file.read()
-        self.assertEqual(len(text_file), len("[]"))
+        self.assertEqual(text_file, "[]")
 
     def test_save_to_file_Square_overwrite_file(self):
         """Testing save_to_file method with Square with None arg"""
