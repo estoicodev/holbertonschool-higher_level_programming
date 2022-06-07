@@ -139,6 +139,7 @@ class TestBaseClass(unittest.TestCase):
 
     def test_save_to_file_Rectangle_with_None_arg(self):
         """Testing save_to_file method with Rectangle class with None arg"""
+        os.remove("Rectangle.json")
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as file:
             text_file = file.read()
@@ -146,6 +147,7 @@ class TestBaseClass(unittest.TestCase):
 
     def test_save_to_file_Rectangle_with_empty_list(self):
         """Testing save_to_file method with Rectangle class with empty list"""
+        os.remove("Rectangle.json")
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             text_file = file.read()
@@ -153,6 +155,7 @@ class TestBaseClass(unittest.TestCase):
 
     def test_save_to_file_Rectangle_overwrite_file(self):
         """Testing save_to_file method with Rectangle class with None arg"""
+        os.remove("Rectangle.json")
         Base.reset_class()
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
@@ -198,6 +201,7 @@ class TestBaseClass(unittest.TestCase):
 
     def test_save_to_file_Square_overwrite_file(self):
         """Testing save_to_file method with Square with None arg"""
+        os.remove("Square.json")
         Base.reset_class()
         r1 = Square(10, 7, 2)
         r2 = Square(2, 4)
@@ -310,6 +314,13 @@ class TestBaseClass(unittest.TestCase):
         self.assertNotEqual(id(list_rectangles_output[0]),
                             id(list_rectangles_output[1]))
 
+    def test_load_from_file_Rectangle_doesnt_exist_file(self):
+        """Testing load_from_file method for Rectangle class with a nonexistent file"""
+        os.remove("Rectangle.json")
+        Base.reset_class()
+        list_rectangles_output = Rectangle.load_from_file()
+        self.assertEqual(list_rectangles_output, [])
+
     def test_load_from_file_Square(self):
         """Testing load_from_file method for Square class"""
         os.remove("Square.json")
@@ -320,14 +331,21 @@ class TestBaseClass(unittest.TestCase):
         Square.save_to_file(list_squares_input)
         list_squares_output = Square.load_from_file()
         self.assertEqual(str(list_squares_input[0]),
-                         "[Square] (1) 0/0 - 5")
+                         "[Square] (5) 0/0 - 5")
         self.assertEqual(str(list_squares_input[1]),
-                         "[Square] (2) 9/1 - 7")
+                         "[Square] (6) 9/1 - 7")
         self.assertNotEqual(id(list_squares_input[0]),
                             id(list_squares_input[1]))
         self.assertEqual(str(list_squares_input[0]),
-                         "[Square] (1) 0/0 - 5")
+                         "[Square] (5) 0/0 - 5")
         self.assertEqual(str(list_squares_output[1]),
-                         "[Square] (2) 9/1 - 7")
+                         "[Square] (6) 9/1 - 7")
         self.assertNotEqual(id(list_squares_output[0]),
                             id(list_squares_output[1]))
+
+    def test_load_from_file_Square_doesnt_exist_file(self):
+        """Testing load_from_file method for Square class with a nonexistent file"""
+        os.remove("Square.json")
+        Base.reset_class()
+        list_square_output = Square.load_from_file()
+        self.assertEqual(list_square_output, [])
