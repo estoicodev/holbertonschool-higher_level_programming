@@ -8,5 +8,6 @@
 -- the number of shows linked
 SELECT tvg.name AS genre, COUNT(tvs_g.show_id) AS number_of_shows
 FROM tv_show_genres AS tvs_g INNER JOIN tv_genres AS tvg
-ON tvs_g.show_id = tvs.id
+ON tvs_g.genre_id = tvg.id
+GROUP BY tvg.name
 ORDER BY number_of_shows DESC;
