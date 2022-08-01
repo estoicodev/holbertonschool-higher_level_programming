@@ -11,7 +11,7 @@ if (process.argv.length >= 3) {
       for (let j = 0; j < n; j++) {
         str += 'X';
       }
-      if (i != n - 1) {
+      if (i !== n - 1) {
         str += '\n';
       }
     }
