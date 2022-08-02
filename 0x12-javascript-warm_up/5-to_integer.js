@@ -6,7 +6,7 @@ if (process.argv.length >= 3) {
   if (Number.isNaN(n)) {
     console.log('Not a number');
   } else {
-    console.log(n);
+    console.log(`My number: ${n}`);
   }
 } else {
   console.log('Not a number');
