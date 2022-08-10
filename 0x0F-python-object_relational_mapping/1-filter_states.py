@@ -10,9 +10,9 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", port=3306, user=av[1],
                          passwd=av[2], db=av[3])
     cur = db.cursor()
-    cur.execute("SELECT * FROM hbtn_0e_0_usa.states\
-                WHERE states.name\
-                LIKE 'N%' ORDER BY states.id")
+    cur.execute("SELECT * FROM states\
+                WHERE name\
+                LIKE 'N%' ORDER BY id")
     rows = cur.fetchall()
     for row in rows:
         print(f"{row}")
