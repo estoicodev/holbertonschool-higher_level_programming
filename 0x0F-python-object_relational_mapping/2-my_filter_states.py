@@ -11,8 +11,8 @@ if __name__ == "__main__":
                          passwd=av[2], db=av[3])
     cur = db.cursor()
     cur.execute("SELECT * FROM states\
-                WHERE name = %(search)s\
-                ORDER BY id", {'search': av[4]})
+                WHERE name LIKE '{:s}'\
+                ORDER BY id ASC".format(av[4]))
     rows = cur.fetchall()
     for row in rows:
         if row[1] == av[4]:
