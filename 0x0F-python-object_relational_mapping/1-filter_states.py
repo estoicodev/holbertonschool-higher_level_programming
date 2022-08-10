@@ -15,6 +15,7 @@ if __name__ == "__main__":
                 LIKE 'N%' ORDER BY id ASC")
     rows = cur.fetchall()
     for row in rows:
-        print(f"{row}")
+        if row[1][0] == 'N':
+            print(f"{row}")
     cur.close()
     db.close()
