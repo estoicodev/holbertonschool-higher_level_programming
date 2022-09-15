@@ -1,7 +1,7 @@
 #!/usr/bin/node
-const axios = require("axios");
+const axios = require('axios');
 
-let usersCompletedTasks = {};
+const usersCompletedTasks = {};
 axios
   .get(process.argv[2])
   .then(function (response) {
@@ -9,7 +9,7 @@ axios
     for (let i = 0; i < data.length; i++) {
       if (data[i].completed === true) {
         if (usersCompletedTasks.hasOwnProperty(data[i].userId)) {
-          let currentCompletedTasks = usersCompletedTasks[data[i].userId];
+          const currentCompletedTasks = usersCompletedTasks[data[i].userId];
           usersCompletedTasks[data[i].userId] = currentCompletedTasks + 1;
         } else {
           usersCompletedTasks[data[i].userId] = 1;
