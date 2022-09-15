@@ -8,7 +8,7 @@ axios
     const data = response.data;
     for (let i = 0; i < data.length; i++) {
       if (data[i].completed === true) {
-        if (usersCompletedTasks.hasOwnProperty(data[i].userId)) {
+        if (data[i].userId in usersCompletedTasks) {
           const currentCompletedTasks = usersCompletedTasks[data[i].userId];
           usersCompletedTasks[data[i].userId] = currentCompletedTasks + 1;
         } else {
