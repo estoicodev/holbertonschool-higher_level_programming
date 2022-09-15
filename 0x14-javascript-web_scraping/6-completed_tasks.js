@@ -1,0 +1,25 @@
+#!/usr/bin/node
+const axios = require("axios");
+
+let usersCompletedTasks = {};
+axios
+  .get(process.argv[2])
+  .then(function (response) {
+    const data = response.data;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].completed === true) {
+        if (usersCompletedTasks.hasOwnProperty(data[i].userId)) {
+          let currentCompletedTasks = usersCompletedTasks[data[i].userId];
+          usersCompletedTasks[data[i].userId] = currentCompletedTasks + 1;
+        } else {
+          usersCompletedTasks[data[i].userId] = 1;
+        }
+      }
+    }
+    console.log(usersCompletedTasks);
+  })
+  .catch(function (err) {
+    if (err.response) {
+      console.log(`code: ${err.response.status}`);
+    }
+  });
