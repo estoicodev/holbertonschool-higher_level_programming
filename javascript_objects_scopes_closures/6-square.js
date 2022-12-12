@@ -1,7 +1,7 @@
 #!/usr/bin/node
-const Square_5 = require('./5-square');
+const SquareTask5 = require('./5-square');
 
-class Square extends Square_5 {
+class Square extends SquareTask5 {
   constructor (size) {
     super(size, size);
   }
